@@ -24,11 +24,6 @@ require 'avatars_for_rails'
 require 'kaminari'
 # Oauth
 require 'omniauth'
-require 'omniauth-twitter'
-require 'omniauth-facebook'
-require 'omniauth-github'
-require 'omniauth-linkedin'
-require 'omniauth-openid'
 #Tags
 require 'acts-as-taggable-on'
 require 'acts_as_taggable_on/social_stream'
