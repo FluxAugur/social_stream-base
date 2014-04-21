@@ -13,7 +13,7 @@ module SocialStream
     # responsible for adding subject features to each model.
     #
     # = Scopes
-    # There are several scopes available for subjects 
+    # There are several scopes available for subjects
     #
     # alphabetic:: sort subjects by name
     # search:: simple search by name
@@ -23,18 +23,18 @@ module SocialStream
     #
     module Subject
       extend ActiveSupport::Concern
-      
+
       included do
         belongs_to :actor,
                    :validate => true,
                    :autosave => true
-        
+
         has_one :profile, :through => :actor
-        
+
         validates_presence_of :name
-        
+
         accepts_nested_attributes_for :profile
-        
+
         scope :alphabetic, joins(:actor).merge(Actor.alphabetic)
 
         scope :letter, lambda{ |param|
@@ -44,7 +44,7 @@ module SocialStream
         scope :search, lambda{ |param|
           joins(:actor).merge(Actor.search(param))
         }
-        
+
         scope :tagged_with, lambda { |param|
           if param.present?
             joins(:actor => :activity_object).merge(ActivityObject.tagged_with(param))
@@ -53,12 +53,12 @@ module SocialStream
 
         scope :distinct_initials, joins(:actor).merge(Actor.distinct_initials)
 
-        scope :followed, lambda { 
+        scope :followed, lambda {
           joins(:actor).
             order("actors.follower_count DESC")
         }
 
-        scope :liked, lambda { 
+        scope :liked, lambda {
           joins(:actor => :activity_object).
             order('activity_objects.like_count DESC')
         }
@@ -72,42 +72,42 @@ module SocialStream
         }
 
       end
-      
+
       module InstanceMethods
         def actor!
           actor || build_actor(:subject_type => self.class.to_s)
         end
-        
+
         def to_param
           slug
         end
 
-        # Delegate missing methods to {Actor}, if they exist there
-        def method_missing(method, *args, &block)
-          super
-        rescue NameError => subject_error 
-          # These methods must be raised to avoid loops (the :actor association calls here again)
-          exceptions = [ :_actor_id ]
-          raise subject_error if exceptions.include?(method)
+        # # Delegate missing methods to {Actor}, if they exist there
+        # def method_missing(method, *args, &block)
+        #   super
+        # rescue NameError => subject_error
+        #   # These methods must be raised to avoid loops (the :actor association calls here again)
+        #   exceptions = [ :_actor_id ]
+        #   raise subject_error if exceptions.include?(method)
 
-          actor!.__send__ method, *args, &block
-        end
+        #   actor!.__send__ method, *args, &block
+        # end
 
         # {Actor} handles some methods
         def respond_to? *args
           super || actor!.respond_to?(*args)
         end
       end
-      
+
       module ClassMethods
         def find_by_slug(perm)
           includes(:actor).where('actors.slug' => perm).first
         end
-        
+
         def find_by_slug!(perm)
           find_by_slug(perm) ||
             raise(ActiveRecord::RecordNotFound)
-        end 
+        end
       end
     end
   end
