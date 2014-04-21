@@ -58,7 +58,7 @@ module SocialStream
 
   mattr_accessor :devise_modules
   @@devise_modules = [ :database_authenticatable, :registerable, :recoverable,
-                       :rememberable, :trackable, :omniauthable, :token_authenticatable]
+                       :rememberable, :trackable, :omniauthable ] #, :token_authenticatable]
 
   mattr_writer :objects
   @@objects = [ :post, :comment ]
