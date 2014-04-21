@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :authentications
   devise *SocialStream.devise_modules
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :profile_attributes
+  # # Setup accessible (or protected) attributes for your model
+  # attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :profile_attributes
 
   validates_presence_of :email
 
@@ -124,6 +124,12 @@ class User < ActiveRecord::Base
 #        user
 #      end
 #    end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :remember_me, :profile_attributes)
+  end
 
   end
 end
