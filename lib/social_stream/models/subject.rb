@@ -51,7 +51,7 @@ module SocialStream
           end
         }
 
-        scope :distinct_initials, joins(:actor).merge(Actor.distinct_initials)
+        # scope :distinct_initials, joins(:actor).merge(Actor.distinct_initials)
 
         scope :followed, lambda {
           joins(:actor).
