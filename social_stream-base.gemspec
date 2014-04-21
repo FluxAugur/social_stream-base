@@ -34,6 +34,10 @@ Gem::Specification.new do |s|
   # OAuth client
   s.add_runtime_dependency('omniauth','~> 1.2.1')
   # OAuth provider
+  s.add_runtime_dependency('omniauth-oauth','~> 1.0.1')
+  # OAuth provider
+  s.add_runtime_dependency('omniauth-twitter','~> 1.0.1')
+  # OAuth provider
   s.add_runtime_dependency('oauth-plugin','~> 0.5.1')
   # Messages
   s.add_runtime_dependency('mailboxer','~> 0.11.0')
