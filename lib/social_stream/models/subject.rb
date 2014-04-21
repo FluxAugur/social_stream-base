@@ -82,16 +82,16 @@ module SocialStream
           slug
         end
 
-        # # Delegate missing methods to {Actor}, if they exist there
-        # def method_missing(method, *args, &block)
-        #   super
-        # rescue NameError => subject_error
-        #   # These methods must be raised to avoid loops (the :actor association calls here again)
-        #   exceptions = [ :_actor_id ]
-        #   raise subject_error if exceptions.include?(method)
+        # Delegate missing methods to {Actor}, if they exist there
+        def method_missing(method, *args, &block)
+          super
+        rescue NameError => subject_error
+          # These methods must be raised to avoid loops (the :actor association calls here again)
+          exceptions = [ :_actor_id ]
+          raise subject_error if exceptions.include?(method)
 
-        #   actor!.__send__ method, *args, &block
-        # end
+          actor!.__send__ method, *args, &block
+        end
 
         # {Actor} handles some methods
         def respond_to? *args
