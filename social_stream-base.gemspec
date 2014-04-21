@@ -72,4 +72,12 @@ Gem::Specification.new do |s|
   s.add_development_dependency('ci_reporter', '~> 1.9.2')
   # Scaffold generator
   s.add_development_dependency('nifty-generators','~> 0.4.6')
+  # OAuth client
+  s.add_development_dependency('omniauth','~> 1.2.1')
+  # OAuth provider
+  s.add_development_dependency('omniauth-oauth','~> 1.0.1')
+  # OAuth provider
+  s.add_development_dependency('omniauth-twitter','~> 1.0.1')
+  # OAuth provider
+  s.add_development_dependency('oauth-plugin','~> 0.5.1')
 end
