@@ -43,6 +43,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('acts-as-taggable-on','~> 3.1.1')
   # HTML Forms
   s.add_runtime_dependency('formtastic','~> 2.2.1')
+  # Simple Forms
+  s.add_runtime_dependency('simple_form', '~> 3.0.2')
   #Gem dependencies
   s.add_runtime_dependency('resque','~> 1.25.2')
 
