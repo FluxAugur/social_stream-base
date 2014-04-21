@@ -31,6 +31,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('cancan', '~> 1.6.10')
   # Pagination
   s.add_runtime_dependency('kaminari', '~> 0.15.1')
+  # OAuth client
+  s.add_runtime_dependency('omniauth','~> 1.2.1')
   # OAuth provider
   s.add_runtime_dependency('omniauth-twitter','~> 1.0.1')
   # Messages

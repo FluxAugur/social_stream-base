@@ -23,7 +23,7 @@ require 'avatars_for_rails'
 # Pagination
 require 'kaminari'
 # Oauth
-require 'omniauth/oauth'
+require 'omniauth'
 #Tags
 require 'acts-as-taggable-on'
 require 'acts_as_taggable_on/social_stream'
@@ -66,7 +66,7 @@ module SocialStream
   mattr_accessor :activity_forms
   ##@@activity_forms = [:document]
   @@activity_forms = []
-  
+
   class << self
     def setup
       yield self
