@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
   # HTML Forms
   s.add_runtime_dependency('formtastic','~> 1.2.3')
   #Gem dependencies
-  s.add_runtime_dependency('resque','~> 1.17.1')
+  s.add_runtime_dependency('resque','~> 1.25.0')
   
   # Freeze Rails to 3.0.7 until Mailboxer bug is fixed
   s.add_runtime_dependency('rails', '4.1.0')
