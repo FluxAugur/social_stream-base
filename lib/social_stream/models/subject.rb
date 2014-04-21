@@ -35,7 +35,7 @@ module SocialStream
 
         accepts_nested_attributes_for :profile
 
-        scope :alphabetic, joins(:actor).merge(Actor.alphabetic)
+        # scope :alphabetic, joins(:actor).merge(Actor.alphabetic)
 
         scope :letter, lambda{ |param|
           joins(:actor).merge(Actor.letter(param))
