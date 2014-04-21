@@ -33,7 +33,7 @@ module SocialStream
       initializer "social_stream-base.avatars_for_rails" do
         AvatarsForRails.setup do |config|
           config.controller_avatarable = :actor
-          config.current_controller_avatarable = :current_actor
+          #config.current_controller_avatarable = :current_actor
           config.controller_filters = [:authenticate_user!]
           config.avatarable_styles = { :representation => "20x20>",
                                        :contact        => "30x30>",
